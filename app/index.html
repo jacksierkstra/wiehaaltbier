@@ -1,59 +1,77 @@
-<!doctype html>
-<html class="no-js">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
-  </head>
-  <body ng-app="angularJs">
-    <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+<!DOCTYPE html>
+<html data-ng-app="whogetsbeer">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <title data-ng-bind="title"></title>
+    <style>
+        /* This helps the ng-show/ng-hide animations start at the right place. */
+        /* Since Angular has this but needs to load, this gives us the class early. */
+        .ng-hide {
+            display: none!important;
+        }
+    </style>
 
-    <!-- Add your site or application content here -->
-    <div class="container">
-      <div ng-view></div>
+    <!-- inject-vendor:css -->
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/bower_components/toastr/toastr.css" rel="stylesheet" />
+    <!-- endinject -->
+
+</head>
+<body>
+    <div>
+        <div data-ng-include="'scripts/layout/shell.html'"></div>
+        <div id="splash-page" data-ng-show="false">
+            <div class="page-splash">
+                <div class="page-splash-message">
+                    Angular Modular Demo
+                </div>
+                <div class="progress progress-striped active page-progress-bar">
+                    <div class="bar"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <!-- inject-vendor:js -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
+    <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/bower_components/toastr/toastr.js"></script>
+    <script src="/bower_components/moment/moment.js"></script>
+    <script src="/bower_components/extras.angular.plus/ngplus-overlay.js"></script>
+    <!-- endinject -->
 
-       ga('create', 'UA-21344450-13');
-       ga('send', 'pageview');
-    </script>
+    <!-- inject:js -->
+    <!-- Bootstrapping -->
+    <script src="/scripts/app.module.js"></script>
 
-    <!-- build:js scripts/oldieshim.js -->
-    <!--[if lt IE 9]>
-    <script src="../bower_components/es5-shim/es5-shim.js"></script>
-    <script src="../bower_components/json3/lib/json3.js"></script>
-    <![endif]-->
-    <!-- endbuild -->
+    <!-- Reusable Blocks/Modules -->
+    <script src="/scripts/blocks/exception/exception.module.js"></script>
+    <script src="/scripts/blocks/exception/exception-handler.provider.js"></script>
+    <script src="/scripts/blocks/exception/exception.js"></script>
+    <script src="/scripts/blocks/logger/logger.module.js"></script>
+    <script src="/scripts/blocks/logger/logger.js"></script>
+    <script src="/scripts/blocks/router/router.module.js"></script>
+    <script src="/scripts/blocks/router/routehelper.js"></script>
 
-    <!-- build:js scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="../bower_components/angular/angular.js"></script>
-    <script src="../bower_components/angular-route/angular-route.js"></script>
-    <script src="../bower_components/angular-mocks/angular-mocks.js"></script>
-    <script src="../bower_components/angular-animate/angular-animate.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
+    <!-- core module -->
+    <script src="/scripts/core/core.module.js"></script>
+    <script src="/scripts/core/constants.js"></script>
+    <script src="/scripts/core/config.js"></script>
 
-    <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/main.js"></script>
-    <!-- endbuild -->
-  </body>
+    <!-- layout -->
+    <script src="/scripts/layout/layout.module.js"></script>
+    <script src="/scripts/layout/shell.js"></script>
+
+    <!-- home -->
+    <script src="/scripts/home/home.module.js"></script>
+    <script src="/scripts/home/config.route.js"></script>
+
+</body>
 </html>
